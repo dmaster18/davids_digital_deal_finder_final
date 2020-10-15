@@ -1,0 +1,34 @@
+<header> <title>All Deals</title> </header>
+
+<% if flash[:success] %>
+  <div class = "success"> <%=flash[:success] %> </div>
+<% end %>
+
+<h1>All Deals</h1>
+
+<% if @items.any? %>
+  <div class = "items">
+    <h3><b><u>All Deals:</u></b></h3>
+    <ul>
+      <% @items.each do |item| %>
+        <li><%=link_to item.title, item_path(item) %></li>
+      <% end %>
+    </ul>
+  </div>
+<% else %>
+  <br>
+  <h3 style="color:red"><b>Unfortunately, there are no items right now. Please create one by clicking on the link below. </b></h3>
+<% end %>
+
+<% if @purchased_items.any? %>
+  <div class = "purchased_items">
+    <h3><b><u>Purchased Deals:</u></b></h3>
+    <ul>
+      <% @purchased_items.each do |purchased_item| %>
+        <li><%=link_to purchased_item.title, item_path(purchased_item) %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= link_to "Add new deal", new_item_path %>

@@ -1,0 +1,35 @@
+<header> <title>Reviews</title> </header>
+
+<% if flash[:success] %>
+  <div class = "success"> <%=flash[:success] %> </div>
+<% end %>
+
+<h1> Reviews </h1>
+
+<% if @all_reviews.any? %>
+  <div class = "all_reviews">
+    <h3><b><u>All Reviews:</u></b></h3>
+    <ul>
+      <% @all_reviews.each do |review| %>
+        <li><%=link_to review.title, review_path(review) %></li>
+      <% end %>
+    </ul>
+  </div>
+<% else %>
+  <br>
+  <h3 style="color:red"><b>Unfortunately, there are no reviews. Please create one by clicking on the link below. </b></h3>
+<% end %>
+
+<% if @my_reviews.any? %>
+  <div class = "my_reviews">
+    <h3><b><u>My Reviews:</u></b></h3>
+    <ul>
+      <% @my_reviews.each do |review| %>
+        <li><%=link_to review.title, review_path(review) %></li>
+        <% end %>
+      </ul>
+    </div>
+<% end %>
+
+<br><br><br>
+<%= link_to "Create new review", new_review_path %>

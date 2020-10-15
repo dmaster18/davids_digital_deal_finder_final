@@ -1,0 +1,29 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  category: MyString
+  description: MyString
+  price: 1.5
+  item_creation_date: 2020-10-05 15:24:27
+  item_modification_date: 2020-10-05 15:24:27
+  link: MyString
+  retailer: MyString
+  source: MyString
+  active?: false
+  user_ranking: 1
+  ordered?: false
+
+two:
+  title: MyString
+  category: MyString
+  description: MyString
+  price: 1.5
+  item_creation_date: 2020-10-05 15:24:27
+  item_modification_date: 2020-10-05 15:24:27
+  link: MyString
+  retailer: MyString
+  source: MyString
+  active?: false
+  user_ranking: 1
+  ordered?: false

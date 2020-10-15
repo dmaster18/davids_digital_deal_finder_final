@@ -1,0 +1,32 @@
+<header> <title>New Deal</title> </header>
+
+<h1>New Deal</h1>
+
+<% if @errors.any? %>
+  <h3 style="color:#FF0000">Your item submission failed for the following <%= pluralize(@errors.count, "reason") %>:</h3>
+  <ul>
+  <% @errors.full_messages.each do |error_message| %>
+    <li style="color:#FF0000"><%= error_message %></li>
+  <% end %>
+  </ul>
+<% end %>
+
+<%= form_for @item do |f| %>
+  <%= f.label "Title" %>
+  <%= f.text_field :title %><br>
+  <%= f.label "Description" %>
+  <%= f.text_area :description %><br>
+  <%= f.label "Sale Price" %>
+  <%= f.text_field :sale_price %><br>
+  <%= f.label "Original Price" %>
+  <%= f.text_field :original_price %><br>
+  <%= f.label "Link" %>
+  <%= f.text_field :link %><br>
+  <%= f.label "Retailer" %>
+  <%= f.text_field :retailer %><br>
+  <%= f.label "Source" %>
+  <%= f.text_field :source %><br>
+  <%= f.label "Ordered?" %>
+  <%= f.check_box :ordered, {}, 1, 0 %><br>
+  <%= f.submit %>
+<% end %>

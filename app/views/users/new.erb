@@ -1,0 +1,33 @@
+<header> <title>Sign Up</title> </header>
+
+<h2>Sign Up to David's Digital Deal Finder</h2>
+
+<% if @user.errors.any? %>
+  <h3 style="color:#FF0000">Your signup failed for the following <%= pluralize(@user.errors.count, "reason") %>:</h3>
+  <ul>
+  <% @user.errors.full_messages.each do |error_message| %>
+    <li style="color:#FF0000"><%= error_message %></li>
+  <% end %>
+  </ul>
+<% end %>
+
+<%= form_for @user do |f| %>
+  <%= f.label :username %>
+  <%= f.text_field :username %>
+  <%= f.label "Confirm Username" %>
+  <%= f.text_field :username_confirmation %><br>
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+  <%= f.label "Confirm Password" %>
+  <%= f.password_field :password_confirmation %><br>
+  <%= f.label :first_name %>
+  <%= f.text_field :first_name %><br>
+  <%= f.label :last_name %>
+  <%= f.text_field :last_name %><br>
+  <%= f.label :email_address %>
+  <%= f.text_field :email_address %> <br>
+  <%= f.submit %>
+<% end %>
+
+<br><br>
+<%= link_to "Already a user? Login Here!", "/sessions/new" %>

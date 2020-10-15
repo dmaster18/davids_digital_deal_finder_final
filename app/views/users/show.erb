@@ -1,0 +1,43 @@
+<header> <title><%= @current_user.username %>'s Account</title> </header>
+
+<% if flash[:success] %>
+  <div class = "success"> <%=flash[:success] %> </div>
+<% end %>
+
+<h1><%= @current_user.username %>'s Account Page</h1>
+
+<div class = "wishlists">
+<h3><u>My Wishlists</u></h3>
+<ul>
+  <li><%=link_to "View my wishlist#{"s" if @wishlists.length > 1}", wishlists_path %></li>
+  <li><%=link_to "Create new wishlist", new_wishlist_path %></li>
+</ul>
+</div>
+
+<div class = "deals">
+<h3><u>Deals</u></h3>
+<ul>
+  <li><%=link_to "View all deals", items_path %></li>
+  <li><%=link_to "Add new deal", new_item_path %></li>
+</ul>
+</div>
+
+
+<div class = "reviews">
+<h3><u>My Reviews</u></h3>
+<ul>
+  <li><%=link_to "View review#{"s" if @reviews.length > 1}", reviews_path %></li>
+  <li><%=link_to "Add new review", new_review_path %></li>
+</ul>
+</div>
+
+<div class = "account_details">
+<h3><u>My Account Details</u></h3>
+<ul>
+  <li><%=link_to "Edit account", edit_user_path(@current_user) %></li>
+  <li><%=link_to "Delete account", user_path(@current_user), method: 'delete' %></li>
+</ul>
+<br>
+<div>
+
+<%= link_to "Log Out", session_path(session[:user_id]), :method => :delete %>

@@ -1,0 +1,64 @@
+<header> <title><%= @item.title %></title> </header>
+
+<% if flash[:success] %>
+  <div class = "success"> <%=flash[:success] %> </div>
+<% end %>
+
+<h1><%= @item.title %></h1>
+
+<h3><b><u>Details:</u></b></h3>
+
+<ul>
+  <% if @item.description? %>
+    <li>Deal Description: <%=@item.description %> </li>
+  <% end %>
+  <% if @item.not_nil_or_zero(@item.sale_price) %>
+  <li>Sale Price: $<%=@item.sale_price %> </li>
+  <% end %>
+  <% if @item.not_nil_or_zero(@item.original_price) %>
+    <li>Original Price: $<%=@item.original_price %> </li>
+  <% end %>
+  <% if @item.not_nil_or_zero(@sale_percentage) %>
+  <li>Percentage Off: <%=@item.sale_percentage %>% </li>
+  <% end %>
+  <li>Retailer: <%=@item.retailer %> </li>
+  <li>Deal Source: <%=@item.source %> </li>
+  <li>Deal Link: <a href="<%=@item.link %>"> <%=@item.title%> Link</a> </li>
+  <li>Deal Created On: <%=date_conversion @item.creation_date_array %></li>
+  <li>Deal Updated On: <%=date_conversion @item.update_date_array %></li>
+</ul>
+
+<br>
+<div class = "reviews">
+  <% if @reviews.any? %>
+    <h3><b><u><%= pluralize(@reviews.count, "Review")%>:</u></b></h3>
+    <ol>
+      <% @reviews.each do |review| %>
+        <li> <%= link_to review.title, review_path(review) %> </li>
+      <% end %>
+    </ol>
+  <% end %>
+</div>
+
+<div class="form">
+  <%= form_for @item do |f| %>
+      <%= f.label "Ordered?" %>
+      <%= f.check_box :ordered %><br>
+      <br>
+      <% if @wishlists.any? %>
+        <h3><b><u>Wishlists:</u></b></h3>
+        <%= f.collection_check_boxes :wishlist_ids, @wishlists, :id, :name %>
+      <% end %>
+    <%= f.submit %>
+ <% end %>
+</div>
+
+<br>
+
+<%= link_to "Review deal", new_item_review_path(@item) %>
+<br>
+<%= link_to "Edit deal", edit_item_path(@item) %>
+<br>
+<%= link_to "Delete deal",item_path(@item), method: 'delete' %>
+<br>
+<%= link_to "Return to all deals", items_path %>

@@ -1,0 +1,10 @@
+<header> <title>Welcome</title> </header>
+
+<% if flash[:success] %>
+  <div class = "success"> <%=flash[:success] %> </div>
+<% end %>
+
+<h1>Welcome to David's Digital Deal Finder!</h1>
+
+<%= link_to "New? Signup Here!", "/users/new" %><br>
+<%= link_to "Already a user? Login Here!", "/sessions/new" %><br>

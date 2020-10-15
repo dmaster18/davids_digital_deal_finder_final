@@ -1,0 +1,26 @@
+<header> <title><%= @review.title %></title> </header>
+
+<% if flash[:success] %>
+  <div class = "success"> <%=flash[:success] %> </div>
+<% end %>
+
+<h1><%= @review.title %></h1>
+
+<h4>Reviewed Product: <%=link_to @item.title, item_path(@item) %> </h4>
+
+<h4>Rating: <%= @review.rating %> out of 5 </h4>
+
+<% if @review.description? %>
+  <h4>Description: <%= @review.description %> </h4>
+<% end %>
+
+<h5>Review Submitted By: <%= @user.username %> </h5>
+
+
+<% if @current_user.id == @review.user_id %>
+  <%= link_to "Edit review", edit_review_path(@review) %>
+  <br>
+  <%= link_to "Delete review",review_path(@review), method: 'delete' %>
+  <br>
+<% end %>
+<%= link_to "Return to all reviews", reviews_path %>

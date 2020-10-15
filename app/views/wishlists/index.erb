@@ -1,0 +1,24 @@
+<header> <title>All My Wishlists</title> </header>
+
+<% if flash[:success] %>
+  <div class = "success"> <%=flash[:success] %> </div>
+<% end %>
+
+<h1>All My Wishlists</h1>
+
+<% if @wishlists.any? %>
+  <div class = "wishlists">
+    <h3><b><u>Wishlists:</u></b></h3>
+    <ul>
+      <% @wishlists.each do |wishlist| %>
+        <li><%=link_to wishlist.name, wishlist_path(wishlist) %></li>
+      <% end %>
+    </ul>
+  </div>
+<% else %>
+  <br>
+  <h3 style="color:red"><b>Unfortunately, you have no wishlists right now. Please create one by clicking on the link below. </b></h3>
+<% end %>
+
+<br><br><br>
+<%= link_to "Create new wishlist", new_wishlist_path %>

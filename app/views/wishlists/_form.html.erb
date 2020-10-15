@@ -1,0 +1,18 @@
+<% if @errors.any? %>
+  <h3 style="color:#FF0000">Your wishlist failed for the following <%= pluralize(@errors.count, "reason") %>:</h3>
+  <ul>
+  <% @errors.full_messages.each do |error_message| %>
+    <li style="color:#FF0000"><%= error_message %></li>
+  <% end %>
+  </ul>
+<% end %>
+
+<%= form_for @wishlist do |f| %>
+  <%= f.label "Wishlist Name" %>
+  <%= f.text_field :name %><br>
+  <%= f.label "Description" %>
+  <%= f.text_area :description %><br>
+  <%= f.label "Add Item(s)" %>
+  <%= f.collection_select :item_ids, Item.all, :id, :title, {include_blank: true}, {multiple: true} %><br>
+  <%= f.submit %>
+<% end %>

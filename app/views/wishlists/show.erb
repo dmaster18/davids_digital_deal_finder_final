@@ -1,0 +1,29 @@
+<header> <title><%= @wishlist.name %> Wishlist</title> </header>
+
+<% if flash[:success] %>
+  <div class = "success"> <%=flash[:success] %> </div>
+<% end %>
+
+<h1><%= @wishlist.name %> Wishlist</h1>
+
+<% if @wishlist.description? %>
+  <h4> Description: <%= @wishlist.description %> </h4>
+<% end %>
+
+
+<h3><u>Wishlist Items</u></h3>
+
+<ol>
+  <% @items.each do |item| %>
+    <li><%= link_to item.title, item_path(item) %></li>
+  <% end %>
+</ol>
+
+<% if @current_user.id == @wishlist.user_id %>
+  <%= link_to "Edit wishlist", edit_wishlist_path(@wishlist) %>
+  <br>
+  <%= link_to "Delete wishlist",wishlist_path(@wishlist), method: 'delete' %>
+  <br>
+<% end %>
+
+<%= link_to "Return to all wishlists", wishlists_path %>
