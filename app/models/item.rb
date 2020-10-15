@@ -23,12 +23,10 @@ class Item < ApplicationRecord
 
   def creation_date_array
     whole_date_array = self.created_at.to_s.split(" ")
-    #date_conversion(whole_date_array)
   end
 
   def update_date_array
     whole_date_array = self.updated_at.to_s.split(" ")
-    #date_conversion(whole_date_array)
   end
 
   def convert_sale_price
@@ -56,15 +54,3 @@ class Item < ApplicationRecord
     end
   end
 end
-
-#t.string :description
-#t.float :original_price
-#t.float :sale_percentage
-#t.datetime :item_creation_date
-#t.datetime :item_modification_date
-#t.string :link
-#t.string :retailer
-#t.string :source
-#t.boolean :active?
-#t.integer :user_ranking
-#t.boolean :ordered?
