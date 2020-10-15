@@ -4,7 +4,7 @@ class User < ApplicationRecord
   has_many :wishlists
   has_many :items, through: :wishlists
   has_many :reviews
-  validates :username, :password, :password, :first_name, presence: true, if: :password_required
+  validates :username, :password, :first_name, presence: true, if: :password_required
   validates :username, :email_address, uniqueness: true
   validates :username, :password, confirmation: { case_sensitive: true }, if: :password_required
   validates :password, length: { in: 8..30 }, if: :password_required
