@@ -92,12 +92,6 @@ class DealScraper
           newegg_sale_price = newegg_item.css("li.price-current strong").text.delete("/%$, /").to_i #Doesn't have $ sign
           newegg_original_price = newegg_item.css("li.price-was span.price-was-data").text.strip.delete("/%$, /").to_i #Doesn't have a $ sign
           newegg_sale_percentage = newegg_item.css("span.price-save-percent").text.delete("/%$, /").to_i #Produces ""
-          #newegg_active = newegg_item.css("div.product-inventory strong").text
-          #if newegg_active.include?("In stock.")
-          #  newegg_active = true
-          #else
-          #  newegg_active = false
-          #end
           newegg_link = newegg_item.css("a.item-title")[0]["href"]
           new_newegg_item_object = Item.create(title: newegg_title, sale_price: newegg_sale_price, original_price: newegg_original_price, sale_percentage: newegg_sale_percentage, link: newegg_link, retailer: "Newegg", source: "Newegg")
           newegg_item_objects << new_newegg_item_object
@@ -118,7 +112,6 @@ class DealScraper
         slick_deals_title = slick_deals_item.css(".itemTitle").children.text
         slick_deals_sale_price = slick_deals_item.css("div.itemPrice").text.strip.delete("/%$, /").to_i #Has $ sign
         slick_deals_link = "https://slickdeals.net/#{slick_deals_item.css("a.itemTitle")[0]["href"]}"
-        #slick_deals_retailer = slick_deals_item.css(".itemTitle").children["a"]
         new_slick_deals_item_object = Item.create(title: slick_deals_title, sale_price: slick_deals_sale_price, link: slick_deals_link, source: "SlickDeals")
         slick_deals_item_objects << new_slick_deals_item_object
       end
