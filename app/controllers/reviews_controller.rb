@@ -29,6 +29,7 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     @item = @review.item
     @user = @review.user
+    binding.pry
   end
 
   def edit
@@ -55,7 +56,7 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:item_id, :user_id, :title, :rating, :description)
+    params.require(:review).permit(:item_id, :user_id, :title, :rating, :description, :item_and_user_id)
   end
 
   def set_review

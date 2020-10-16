@@ -20,5 +20,6 @@
   <%= f.radio_button :rating, '3' %> 3
   <%= f.radio_button :rating, '4' %> 4
   <%= f.radio_button :rating, '5' %> 5
+  <%= f.hidden_field :item_and_user_id, :value => @review.item_and_user_id %>
   <%= f.submit %>
 <% end %>
