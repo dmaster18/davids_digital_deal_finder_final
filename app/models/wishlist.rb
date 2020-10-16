@@ -4,7 +4,7 @@ class Wishlist < ApplicationRecord
   has_many :items, through: :wishlist_items
   validates :user_id, :name, presence: true
 
-  def no_description
+  def description?
     if self.description != nil && self.description != ""
       true
     else
