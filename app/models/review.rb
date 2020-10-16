@@ -2,7 +2,7 @@ class Review < ApplicationRecord
   belongs_to :user
   belongs_to :item
   validates :item_id, :user_id, :title, :rating, presence: true
-end
+  validates :user_id, uniqueness: true
 
 def description?
   if self.description != nil && self.description != ""
