@@ -2,11 +2,9 @@ class Review < ApplicationRecord
   belongs_to :user
   belongs_to :item
   validates :item_id, :user_id, :title, :rating, presence: true
-  validates :user_id_user_id, uniqueness: true
+  validates :item_and_user_id, uniqueness: true #Prevents more than 1 review by same user
 
-  attr_accessor :item_id_user_id
-
-  def item_id_user_id
+  def item_and_user_id
     "#{self.item_id} #{self.user_id}"
   end
 
