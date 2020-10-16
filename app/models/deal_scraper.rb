@@ -65,7 +65,7 @@ class DealScraper
     walmart_items = walmart_page.css("div.search-result-listview-item")
     walmart_item_objects = []
     walmart_items.each do |walmart_item|
-      if !walmart_item.css("a")[1].children.nil? && !walmart_item.css("span.price-main-block span.visuallyhidden").nil? && !walmart_item.css("span.price span.visuallyhidden").nil? && !walmart_item.css("a")[0]["href"].nil?
+      if !walmart_item.css("a")[1].children.nil? && !walmart_item.css("span.price-main-block span.visuallyhidden").nil? && !walmart_item.css("span.price span.visuallyhidden").nil? && !walmart_item.css("span.price-main-block span.visuallyhidden").text.nil? && !walmart_item.css("span.price span.visuallyhidden").text.split("$")[2].nil? && !walmart_item.css("a")[0]["href"].nil?
         walmart_title = walmart_item.css("a")[1].children.text
         walmart_sale_price = walmart_item.css("span.price-main-block span.visuallyhidden").text.delete("/%$, /").to_i #Has $ sign
         walmart_original_price = walmart_item.css("span.price span.visuallyhidden").text.split("$")[2].delete("/%$, /").to_i #Doesn't have $ sign
