@@ -32,7 +32,6 @@ ActiveRecord::Schema.define(version: 2020_10_05_192714) do
     t.string "title"
     t.integer "rating"
     t.string "description"
-    t.string "item_and_user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
