@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found #Redirects to root path if ActiveRecord object not found
 
   def user_logged_in? #Determines if user is logged in by checking to see if session has an existing :user_id.
     !!session[:user_id]
