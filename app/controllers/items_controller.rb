@@ -5,6 +5,7 @@ class ItemsController < ApplicationController
   def index
     @items = Item.all
     @purchased_items = @items.purchased.select{|item| @current_user.id == session[:user_id]}
+    binding.pry
   end
 
   def new
