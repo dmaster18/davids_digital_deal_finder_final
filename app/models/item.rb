@@ -3,14 +3,11 @@ class Item < ApplicationRecord
   has_many :wishlists, through: :wishlist_items
   has_many :reviews
   validates :title, :sale_price, presence: true
-  validates :title_retailer, uniqueness: true
+  validates :title, uniqueness: true
   scope :purchased, -> { where(ordered: true) }
 
-  attr_accessor :title_retailer
 
-  def title_retailer
-    "#{title}_#{retailer}".to_sym
-  end
+
 
   def description?
     if self.description != nil && self.description != ""
