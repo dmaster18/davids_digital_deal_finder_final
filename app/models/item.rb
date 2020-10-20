@@ -6,9 +6,6 @@ class Item < ApplicationRecord
   validates :title, uniqueness: true
   scope :purchased, -> { where(ordered: true) }
 
-
-
-
   def description?
     if self.description != nil && self.description != ""
       true
