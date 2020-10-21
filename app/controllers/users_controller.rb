@@ -44,11 +44,11 @@ class UsersController < ApplicationController
   def destroy
     if @current_user
       @current_user.destroy
+      session.destroy
       flash[:success] = "You have successfully deleted your account!"
       redirect_to root_path
-    else
-      redirect_to root_path
     end
+    redirect_to root_path
   end
 
   private
