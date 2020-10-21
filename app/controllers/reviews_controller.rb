@@ -30,6 +30,11 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     @item = @review.item
     @user = @review.user
+    if @item.nil? || @user.nil?
+      flash[:error] = "#{@review.title} no longer exists because reviewed product was destroyed."
+      @review.delete
+      redirect_to reviews_path
+    end
   end
 
   def edit
