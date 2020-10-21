@@ -22,7 +22,7 @@ class WishlistsController < ApplicationController
       @errors = @wishlist.errors
       render :new
     else
-      redirect_to root_path
+      redirect_to wishlists_path
     end
   end
 
@@ -38,7 +38,7 @@ class WishlistsController < ApplicationController
       flash[:success] = "#{@wishlist.name} successfully updated!"
       redirect_to wishlist_path(@wishlist)
     else
-      redirect_to root_path
+      redirect_to wishlists_path
     end
   end
 
@@ -63,7 +63,7 @@ class WishlistsController < ApplicationController
       @items = @wishlist.items
       @errors = @wishlist.errors
     else
-      redirect_to root_path
+      redirect_to wishlists_path
     end
   end
 

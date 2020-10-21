@@ -74,7 +74,7 @@ class ReviewsController < ApplicationController
     if session[:user_id]
       @review = @current_user.reviews.find(params[:id])
     else
-      redirect_to root_path
+      redirect_to reviews_path
     end
   end
 
