@@ -33,7 +33,7 @@ class ReviewsController < ApplicationController
   end
 
   def edit
-    @item_id = params[:item_id]
+    @item_id = @review.item_id
   end
 
   def update
