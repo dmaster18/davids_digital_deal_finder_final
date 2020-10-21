@@ -9,6 +9,7 @@ class ReviewsController < ApplicationController
   end
 
   def new
+    @item_id = params[:item_id]
     @review = @current_user.reviews.new
     @errors ||= @review.errors
   end
@@ -32,6 +33,7 @@ class ReviewsController < ApplicationController
   end
 
   def edit
+    @item_id = params[:item_id]
   end
 
   def update

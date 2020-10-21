@@ -9,7 +9,7 @@
 
 <%= form_for @review do |f| %>
   <%= f.label "Item" %>
-  <%= f.collection_select :item_id, Item.all, :id, :title %><br>
+  <%= f.collection_select :item_id, Item.all, :id, :title, selected: @item_id %><br>
   <%= f.label "Title" %>
   <%= f.text_field :title %><br>
   <%= f.label "Description" %>
