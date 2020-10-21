@@ -18,9 +18,11 @@ class WishlistsController < ApplicationController
       @wishlist.save
       flash[:success] = "#{@wishlist.name} successfully created!"
       redirect_to wishlist_path(@wishlist)
-    else
+    elsif current_user.id == @wishlist.user_id
       @errors = @wishlist.errors
       render :new
+    else
+      redirect_to root_path
     end
   end
 
@@ -36,7 +38,7 @@ class WishlistsController < ApplicationController
       flash[:success] = "#{@wishlist.name} successfully updated!"
       redirect_to wishlist_path(@wishlist)
     else
-      render :edit
+      redirect_to root_path
     end
   end
 

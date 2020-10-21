@@ -51,7 +51,7 @@ class ReviewsController < ApplicationController
       flash[:success] = "#{@review.title} successfully updated!"
       redirect_to review_path(@review)
     else
-      render :edit
+      redirect_to review_path(@review)
     end
   end
 
