@@ -16,3 +16,5 @@
 .success {text-align: center; font-weight: bold; color: blue; padding:0.8em; margin-bottom:1em; border:2px solid #ddd;}
 .error, .alert {text-align: center; font-weight: bold; color:red ;padding:.8em; margin-bottom:1em; border:2px solid #ddd;}
 h1, h2  {text-align: center}
+
+.search_input{ position: fixed; top: 0; width: 100%;}
