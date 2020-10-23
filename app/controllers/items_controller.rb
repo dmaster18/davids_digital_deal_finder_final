@@ -53,6 +53,11 @@ class ItemsController < ApplicationController
     redirect_to items_path
   end
 
+  def search
+    @items = Item.search(search_item_params)
+    render :index
+  end
+
   private
 
   def item_params
@@ -61,6 +66,10 @@ class ItemsController < ApplicationController
 
   def show_item_params
     params.require(:item).permit(:ordered, wishlist_ids:[])
+  end
+
+  def search_item_params
+    params.require(:item).permit(:search)
   end
 
   def set_item

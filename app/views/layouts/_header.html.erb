@@ -1,8 +1,8 @@
-<%= form_tag(search_page_path, :method => "get") do %>
+<%= form_tag(search_page_path) do %>
   <div class="search_input">
-    <%= search_field_tag :search, params[:search], placeholder: "Search deals...", class: "form-control" %>
-    <div class="input-group-btn">
-      <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>
+    <%= search_field_tag :search, placeholder: "Search deals..." %>
+    <div>
+      <%= button_tag "Search deals", type: "button"%>
     </div>
   </div>
 <% end %>
