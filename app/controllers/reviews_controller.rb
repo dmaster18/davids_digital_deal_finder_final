@@ -16,8 +16,7 @@ class ReviewsController < ApplicationController
 
   def create
     @review = @current_user.reviews.new(review_params)
-    if @review.valid? && @current_user.id == @review.user_id
-      @review.save
+    if @review.save
       flash[:success] = "#{@review.title} successfully created!"
       redirect_to review_path(@review)
     else
@@ -46,8 +45,7 @@ class ReviewsController < ApplicationController
   end
 
   def update
-    if @review.valid? && @current_user.id == @review.user_id
-      @review.update(review_params)
+    if @review.update(review_params)
       flash[:success] = "#{@review.title} successfully updated!"
       redirect_to review_path(@review)
     else
@@ -56,8 +54,7 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-    if @current_user.id == @review.user_id
-      @review.destroy
+    if @review.destroy
       flash[:success] = "#{@review.title} successfully deleted!"
       redirect_to reviews_path
     end

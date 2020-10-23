@@ -14,8 +14,7 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    if @item.valid?
-      @item.save
+    if @item.save
       flash[:success] = "#{@item.title} successfully created!"
       redirect_to item_path(@item)
     else
@@ -40,8 +39,7 @@ class ItemsController < ApplicationController
   end
 
   def update
-    if @item.valid?
-      @item.update(item_params)
+    if @item.update(item_params)
       flash[:success] = "#{@item.title} successfully updated!"
       redirect_to item_path(@item)
     else

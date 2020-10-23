@@ -33,8 +33,7 @@ class WishlistsController < ApplicationController
   end
 
   def update
-    if @wishlist.valid? && @current_user.id == @wishlist.user_id
-      @wishlist.update(wishlist_params)
+    if @wishlist.update(wishlist_params)
       flash[:success] = "#{@wishlist.name} successfully updated!"
       redirect_to wishlist_path(@wishlist)
     else
@@ -43,8 +42,7 @@ class WishlistsController < ApplicationController
   end
 
   def destroy
-    if @current_user.id == @wishlist.user_id
-      @wishlist.destroy
+    if @wishlist.destroy
       flash[:success] = "#{@wishlist.name} successfully deleted!"
       redirect_to wishlists_path
     end
