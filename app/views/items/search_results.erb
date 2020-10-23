@@ -1,9 +1,5 @@
 <header> <title>Search Results</title> </header>
 
-<% if flash[:success] %>
-  <div class = "success"> <%=flash[:success] %> </div>
-<% end %>
-
 <h1>Your Search Results</h1>
 
 <% if @items.any? %>
