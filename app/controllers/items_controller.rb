@@ -54,9 +54,9 @@ class ItemsController < ApplicationController
   end
 
   def search
-    if !search_item_params.nil? && search_item_params != ""
-        @items = Item.search(search_item_params)
-        render "items/search_results"
+    if !params.nil? && params != ""
+        @items = Item.search(params[:title])
+        render :search_results
     end
   end
 
@@ -68,10 +68,6 @@ class ItemsController < ApplicationController
 
   def show_item_params
     params.require(:item).permit(:ordered, wishlist_ids:[])
-  end
-
-  def search_item_params
-    params.require(:item).permit(:search)
   end
 
   def set_item
