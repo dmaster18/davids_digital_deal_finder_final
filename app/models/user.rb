@@ -26,9 +26,6 @@ class User < ApplicationRecord
     else
       username = auth_hash['info']['nickname']
       first_name = auth_hash['info']['name']
-      #email_address = auth_hash['info']['email']
-      #u.image = auth_hash['info']['image']
-      #u.url = auth_hash['info']['urls']['GitHub']
       user = self.new(uid: auth_hash['uid'], username: username, first_name: first_name)
       user.password_required = false
       user
