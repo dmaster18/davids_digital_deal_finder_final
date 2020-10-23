@@ -54,8 +54,15 @@ class ItemsController < ApplicationController
   end
 
   def search
-    @items = Item.search(search_item_params)
-    render :index
+    if !search_item_params.nil? && search_item_params != ""
+        @items = Item.search(search_item_params)
+        if @items.any?
+          redirect_to :index
+        else
+          flash[:error] = "No deals found"
+          redirect_to root_path
+        end
+    end
   end
 
   private
