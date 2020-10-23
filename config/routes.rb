@@ -13,8 +13,7 @@ Rails.application.routes.draw do
   get "login", to: "sessions#new"
   post "login", to: "sessions#create"
   match '/auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
-  get "search_input", to: 'items#search'
-  post "search_results", to: 'items#search_result'
+  post "search_results", to: 'items#search'
   root 'users#index'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

@@ -1,6 +1,6 @@
-<%= form_tag(search_page_path) do %>
+<%= form_tag(search_results_path) do %>
   <div class="search_input">
-    <%= search_field_tag :search, placeholder: "Search deals..." %>
+    <%= search_field_tag :search %>
     <div>
       <%= button_tag "Search deals", type: "button"%>
     </div>
