@@ -56,13 +56,11 @@ class ItemsController < ApplicationController
   def search
     if !search_item_params.nil? && search_item_params != ""
         @items = Item.search(search_item_params)
-        if @items.any?
-          redirect_to :index
-        else
-          flash[:error] = "No deals found"
-          redirect_to root_path
-        end
+        render "items/search_results"
     end
+  end
+
+
   end
 
   private

@@ -1,0 +1,22 @@
+<header> <title>Search Results</title> </header>
+
+<% if flash[:success] %>
+  <div class = "success"> <%=flash[:success] %> </div>
+<% end %>
+
+<h1>Your Search Results</h1>
+
+<% if @items.any? %>
+  <div class = "items">
+    <ul>
+      <% @items.each do |item| %>
+        <li><%=link_to item.title, item_path(item) %></li>
+      <% end %>
+    </ul>
+  </div>
+<% else %>
+  <br>
+  <h3 style="color:red"><b>Unfortunately, your search result doesn't match any current deals. </b></h3>
+<% end %>
+
+<%= link_to "Add new deal", new_item_path %>
