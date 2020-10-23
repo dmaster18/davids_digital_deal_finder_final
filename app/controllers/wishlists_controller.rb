@@ -27,6 +27,9 @@ class WishlistsController < ApplicationController
   end
 
   def show
+    if current_user.id == @wishlist.user_id
+      render :show
+    end
   end
 
   def edit
