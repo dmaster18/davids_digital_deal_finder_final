@@ -5,6 +5,7 @@ class Item < ApplicationRecord
   validates :title, :sale_price, presence: true
   validates :title, uniqueness: true
   scope :purchased, -> { where(ordered: true) }
+  scope :searched, -> (search_term){ where("title LIKE ?", "%#{search_term}%" )}
 
   def description?
     if self.description != nil && self.description != ""

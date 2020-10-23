@@ -14,15 +14,12 @@ class WishlistsController < ApplicationController
 
   def create
     @wishlist = @current_user.wishlists.new(wishlist_params)
-    if @wishlist.valid? && current_user.id == @wishlist.user_id
-      @wishlist.save
+    if @wishlist.save
       flash[:success] = "#{@wishlist.name} successfully created!"
       redirect_to wishlist_path(@wishlist)
-    elsif current_user.id == @wishlist.user_id
+    else
       @errors = @wishlist.errors
       render :new
-    else
-      redirect_to wishlists_path
     end
   end
 

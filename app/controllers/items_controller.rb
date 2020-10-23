@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.all
-    @purchased_items = @items.purchased.select{|item| @current_user.id == session[:user_id]}
+    @purchased_items = @current_user.items.purchased
   end
 
   def new
